@@ -1,0 +1,30 @@
+<div class="container">
+    <div>
+        <h2>Mettre à jour votre TUDUM-LIST:</h2>
+    </div>
+    <form>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>code</label>
+            <input type="text" [(ngModel)]="newFilm.code" name="code" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Nom / Name</label>
+            <input type="text" [(ngModel)]="newFilm.nom" name="nom" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Genre</label>
+            <input type="text" [(ngModel)]="newFilm.genre" name="genre" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Date de Sortie / Date of release</label>
+            <input type="date" [(ngModel)]="newFilm.datesortie" name="datesortie" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>IMDb</label>
+            <input type="number" [(ngModel)]="newFilm.rating" name="rating" class="form-control">
+        </div>
+        <div class="mt-2">
+            <button type="submit" (click)="addFilm()" class="btn btn-success">Ajouter</button>
+        </div>
+    </form>
+</div>
