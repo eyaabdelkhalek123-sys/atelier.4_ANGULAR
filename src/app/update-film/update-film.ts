@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Film } from '../model/film.model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Genre } from '../model/genre.model';
 
 @Component({
   selector: 'app-update-film',
@@ -15,6 +16,9 @@ export class UpdateFilm implements OnInit{
 
   currentFilm = new Film();
 
+  genres! : Genre[];
+  updateGenId! : number;
+
   constructor(private activatedRoute: ActivatedRoute, 
               private router : Router, 
               private filmService: FilmService)
@@ -23,16 +27,22 @@ export class UpdateFilm implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log(this.activatedRoute.snapshot.params['code']);
-    this.currentFilm = this.filmService.consulterFilm(this.activatedRoute.snapshot.params['code']); 
+    
+    this.genres= this.filmService.listeGenres();
+    this.currentFilm = this.filmService.consulterFilm(this.activatedRoute.snapshot.params['id']); 
+
+    console.log(this.activatedRoute.snapshot.params['id']);
     console.log(this.currentFilm);
   }
 
   updateFilm()
   {
-    console.log(this.currentFilm);
+    
+    this.currentFilm.genre= this.filmService.consulterGenre(this.updateGenId)
     this.filmService.updateFilm(this.currentFilm); 
     this.router.navigate(['films']);
+
+    console.log(this.currentFilm);
   }
 
 }

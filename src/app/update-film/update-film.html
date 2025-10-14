@@ -3,26 +3,30 @@
         <h2>Modifier un Film:</h2>
     </div>
     <form>
-        <div  hidden class="col-sm-2 col-md-2 col-lg-2">
-            <label>code</label>
-            <input hidden type="text" [(ngModel)]="currentFilm.code" name="code" class="form-control">
+        <div  class="col-sm-2 col-md-2 col-lg-2">
+            <label>Id</label>
+            <input readonly type="text" [(ngModel)]="currentFilm.id" name="id" class="form-control">
         </div>
         <div class="col-sm-2 col-md-2 col-lg-2">
-            <label>Nom / Name</label>
+            <label>Nom</label>
             <input type="text" [(ngModel)]="currentFilm.nom" name="nom" class="form-control">
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
             <label>Genre</label>
-            <input type="text" [(ngModel)]="currentFilm.genre" name="genre" class="form-control">
+            <select class="form-control form-control-lg" id="idgen" name="idgen" [(ngModel)]="updateGenId">
+                @for(gen of genres; track gen.idgen){
+                <option [value]="gen.idgen"> {{gen.nomgen}} </option>
+                }
+            </select>
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
-            <label>Date de Sortie / Date of release</label>
+            <label>Date de Sortie</label>
             <input  type="date"  [ngModel]="currentFilm.datesortie | date: 'yyyy-MM-dd'" 
             (ngModelChange)=" currentFilm.datesortie= $event"   name="datesortie" class="form-control">
         </div>
         <div  class="col-sm-2 col-md-2 col-lg-2">
             <label>IMDb</label>
-            <input readonly type="number" [(ngModel)]="currentFilm.rating" name="rating" class="form-control">
+            <input type="number" [(ngModel)]="currentFilm.rating" name="rating" class="form-control">
         </div>
         <div class="mt-2">
             <button type="submit" (click)="updateFilm()" class="btn btn-success">Modifier</button>

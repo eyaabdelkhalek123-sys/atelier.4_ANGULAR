@@ -4,19 +4,23 @@
     </div>
     <form>
         <div class="col-sm-2 col-md-2 col-lg-2">
-            <label>code</label>
-            <input type="text" [(ngModel)]="newFilm.code" name="code" class="form-control">
+            <label>Id</label>
+            <input type="text" [(ngModel)]="newFilm.id" name="id" class="form-control">
         </div>
         <div class="col-sm-2 col-md-2 col-lg-2">
-            <label>Nom / Name</label>
+            <label>Nom</label>
             <input type="text" [(ngModel)]="newFilm.nom" name="nom" class="form-control">
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
             <label>Genre</label>
-            <input type="text" [(ngModel)]="newFilm.genre" name="genre" class="form-control">
+            <select class="form-control form-control-lg" id="idgen" name="idgen" [(ngModel)]="newIdgenre">
+                @for(gen of genres; track gen.idgen){
+                <option [value]="gen.idgen"> {{gen.nomgen}} </option>
+                }
+            </select>
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
-            <label>Date de Sortie / Date of release</label>
+            <label>Date de Sortie</label>
             <input type="date" [(ngModel)]="newFilm.datesortie" name="datesortie" class="form-control">
         </div>
         <div class="col-sm-2 col-md-2 col-lg-2">

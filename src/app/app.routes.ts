@@ -8,7 +8,7 @@ export const routes: Routes = [
     {path: "films", component : Films},
     {path: "add-film", component : AddFilm},
     {path: "", redirectTo : "films" , pathMatch : "full"},  //dirrection vers films par defaut 
-    {path: "update-film/:code", component : UpdateFilm},
+    {path: "update-film/:id", component : UpdateFilm},
 
 ];
 
